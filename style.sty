@@ -1,0 +1,283 @@
+% ------------------------
+% Базовые языковые пакеты:
+
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[russian]{babel}
+
+% -------------
+% Библиография:
+
+%\usepackage{csquotes}
+%\usepackage[style=authoryear-icomp,bibencoding=utf8]{biblatex}
+
+
+% ----------------------------------------
+% Прочие пакеты (TODO: разбить на группы):
+
+\usepackage{algorithm}
+%\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{algpseudocode}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsopn}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{fancyvrb}
+\usepackage{fix-cm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+\usepackage{lastpage}
+\usepackage{listliketab}
+\usepackage{longtable}
+\usepackage[cal=boondoxo]{mathalfa}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{paracol}
+\usepackage{pdflscape}
+\usepackage{pgf}
+\usepackage{placeins}
+\usepackage{ragged2e}
+\usepackage{setspace}
+\usepackage{subfigure} % don't work with subcaption and tocloft
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{titlesec}
+\usepackage{totcount}
+\usepackage[normalem]{ulem}
+\usepackage{url}
+\usepackage{verbatim}
+
+\usetikzlibrary{calc}
+\usetikzlibrary{plotmarks}
+
+
+% ----------------------------------
+% Различные вспомогательные команды:
+
+\renewcommand{\thefootnote}{(\arabic{footnote})}
+
+\newtotcounter{citnum}
+\def\oldbibitem{} \let\oldbibitem=\bibitem
+\def\bibitem{\stepcounter{citnum}\oldbibitem}
+
+\regtotcounter{page}
+\regtotcounter{section}
+\regtotcounter{figure}
+\regtotcounter{table}
+
+\bibliographystyle{gost}
+
+\linespread{1.3}
+\renewcommand{\rmdefault}{ftm}
+
+\titleformat{\section}[block]{\Large\bfseries\filcenter}{}{1em}{}
+
+\DeclareCaptionLabelSeparator{fill}{ -- }
+\captionsetup[table]{
+    position=above,
+    format=plain,
+    labelsep=fill,
+    justification=RaggedRight,
+    singlelinecheck=false,
+}
+
+\DeclareCaptionLabelSeparator{defffis}{ -- }
+\captionsetup[figure]{
+    justification=centering,
+    labelsep=defffis
+}
+
+\renewcommand{\section}{\@startsection{section}{1}{20pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus.2ex}{\Large\bfseries}}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\subsection}{\@startsection{subsection}{1}{20pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus.2ex}{\normalsize\bfseries}}
+
+% Костыль для кириллической нумерации вместо латинской:
+\renewcommand{\alph}[1]{\asbuk{#1}}
+
+\setenumerate[1]{label=\alph*), fullwidth, listparindent=\parindent}
+\setenumerate[2]{label=\arabic*), fullwidth, itemindent=\doubleparindent,
+listparindent=\parindent}
+
+\renewcommand{\rmdefault}{cmr}  % Шрифт с засечками
+\renewcommand{\sfdefault}{cmss} % Шрифт без засечек
+\renewcommand{\ttdefault}{cmtt} % Моноширинный шрифт
+
+\floatname{algorithm}{Алгоритм}
+\algrenewcommand\algorithmicrequire{\textbf{Входные данные:}}
+\algrenewcommand\algorithmicensure{\textbf{Результат:}}
+
+\newtheorem{theorem}{Теорема}%[section]
+\newtheorem{lemma}{Лемма}%[section]
+\newtheorem{corollary}{Следствие}%[section]
+\newtheorem{remark}{Заметка}%[section]
+\newtheorem{definition}{Определение}%[section]
+
+
+% -------------------------------
+% Оформление списка исполнителей:
+
+\newcommand\person[4]{
+  \if\relax\detokenize{#2}\relax
+    \mbox{#3}
+  \else
+    \mbox{#2} \mbox{#3}
+  \fi
+	&
+	$\underset{\text{(подпись, дата)}}{\underline{\hspace{4cm}}}$
+	&
+	#1 \newline {\small (#4)}
+	\\
+}
+
+\newcommand\personmain[4]{
+  \begin{small}\begin{listliketab}\begin{tabular}{p{6.0cm} p{5cm} p{7cm}}
+    Руководитель работы, & & \\
+    #1
+    &
+    ${\underline{\hspace{5cm}}}$
+    &
+    #2.\,#3.~#4
+  \end{tabular}\end{listliketab}\end{small}
+}
+
+\newcommand\team[2]{
+  \begin{listliketab}
+    \renewcommand*{\arraystretch}{1.8}
+    \begin{tabular}{p{3.8cm} p{4.0cm} p{7cm}}
+        #1
+
+        Нормоконтроль
+      &
+        $\underset{\text{(подпись, дата)}}{\underline{\hspace{4cm}}}$
+      &
+        #2
+      \\
+    \end{tabular}
+  \end{listliketab}
+}
+
+\newcommand\temscirepPerformers[2]{
+  \begin{center}\section*{СПИСОК ИСПОЛНИТЕЛЕЙ}\end{center}
+  \team{#1}{#2}
+  \newpage
+}
+
+
+% --------------------
+% Оформление реферата:
+
+\newcommand\temscirepAbstract[2]{
+  \begin{center}\section*{РЕФЕРАТ}\end{center}
+
+  Отчет \pageref{LastPage} с., 1 кн., \total{figure} рис., \total{table} табл., \total{citnum} источн., 0 прил.
+
+  \vspace{0.2cm}
+
+  #1 % TODO: возможно стоит запретить переносы
+
+  \vspace{0.5cm}
+
+  #2
+}
+
+
+% -------------------------------------
+% Команды для создания разделов отчета:
+
+\newcommand{\inp}[1]{
+  \FloatBarrier
+  \newpage
+  \par
+  \input{special/#1}
+  \par
+}
+
+\newcommand{\sect}[3]{
+  \FloatBarrier
+  \newpage
+  \section{#3}
+  \label{#2}
+  \par
+  \input{content/#1}
+  \par
+}
+
+\newcommand{\sectspec}[2]{
+  \FloatBarrier
+  \newpage
+  \begin{center}\section*{#2}\end{center}
+  \addcontentsline{toc}{section}{\texorpdfstring{#2\dotfill}{#2}}
+  \par
+  \input{special/#1}
+  \par
+}
+
+\newcommand{\subsect}[3]{
+  \subsection{#3}
+  \label{#2}
+  \par
+  \input{content/#1}
+  \par
+}
+
+\newcommand{\subsubsect}[2]{
+  \subsubsection{#2}
+  \label{#1}
+  \par
+}
+
+
+% --------------------------------------
+% Основная команда для сборки документа:
+
+\newcommand{\temscirep}[1]{
+  \def\figurename{Рисунок}
+
+  \ifdefined\mega
+     \inp{title_mega}
+  \fi
+  \unless\ifdefined\mega
+     \inp{title}
+  \fi
+
+  \inp{performers}
+
+  \inp{abstract}
+
+  \FloatBarrier\newpage
+  \renewcommand*{\contentsname}{\begin{center}СОДЕРЖАНИЕ\end{center}}
+  \tableofcontents
+
+  \sectspec{definition}
+    {ПЕРЕЧЕНЬ СОКРАЩЕНИЙ И ОБОЗНАЧЕНИЙ}
+
+  \sectspec{intro}
+    {ВВЕДЕНИЕ}
+
+  #1
+
+  \sectspec{conclusion}
+    {ЗАКЛЮЧЕНИЕ}
+
+  \FloatBarrier\newpage
+  \addcontentsline{toc}{section}
+    {\texorpdfstring{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ\dotfill}
+    {СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}}
+  \renewcommand\refname
+    {\Large\centering СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}
+  \bibliography{biblio.bib}
+}
+
+
+% ------------------------------
+% Папка для хранения изображений:
+
+\graphicspath{{./images/}}

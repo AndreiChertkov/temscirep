@@ -1,0 +1,80 @@
+% \fat - bold font inside the formula or text:
+\newcommand{\fat}[1]{\ifmmode\bm{#1}\else\textbf{#1}\fi}
+
+% \set - linear/functional space (R, N, ...):
+\newcommand{\set}[1]{\mathbb{#1}}
+
+% \vect - vector:
+\newcommand{\vect}[1]{\fat{#1}}
+
+% \matr - matrix:
+\newcommand{\matr}[1]{#1}
+
+% \tens - tensor (or TT-tensor):
+\newcommand{\tens}[1]{\mathcal{#1}}
+
+% \func - function:
+\newcommand{\func}[1]{\textsf{#1}}
+
+% \vfunc - vector-function:
+\newcommand{\vfunc}[1]{\textsf{\vect{#1}}}
+
+% \ffunc - functional:
+\newcommand{\ffunc}[1]{\widehat{#1}}
+
+% \oper - operator:
+\newcommand{\oper}[1]{\widehat{#1}}
+
+% \trace - trace of the matrix:
+\newcommand{\trace}[1]{\mathrm{Tr}\left( #1 \right)}
+
+% \order - Operator O(...):
+\newcommand{\order}[1]{\mathcal{O}\left( #1 \right)}
+
+% \divergence - operator divergence(...):
+\newcommand{\divergence}[1]{\mathrm{div}\left[ #1 \right]}
+
+% \der - derivative d * / d *:
+\newcommand{\der}[2]{\frac{d \, #1}{d \, #2}}
+
+% \dert - time derivative d * / d t:
+\newcommand{\dert}[1]{\der{#1}{t}}
+
+% \derx - spatial derivative d * / d x:
+\newcommand{\derx}[1]{\der{#1}{x}}
+
+% \pder - partial derivative d * / d *:
+\newcommand{\pder}[2]{\frac{\partial #1}{\partial #2}}
+
+% \pdert - partial time derivative d * / d t:
+\newcommand{\pdert}[1]{\pder{#1}{t}}
+
+% \pderx - partial spatial derivative d * / d x:
+\newcommand{\pderx}[1]{\pder{#1}{x}}
+
+% \pderxi - partial spatial derivative for i-th component:
+\newcommand{\pderxi}[2]{\pder{#1}{\vect{x}_{#2}}}
+
+% \vectorize - vectorization (tensor to vector):
+\newcommand{\vectorize}[1]{\fat{vec}\left( #1 \right)}
+
+% \vectl - vector, represented as a list of its elements:
+\newcommand{\vectl}[1]{\fat{\left[} #1 \fat{\right]}^{\top}}
+
+% \iflatten - flatten index from multi-index:
+\newcommand{\iflatten}[1]{\mathrm{ind}\left( #1 \right)}
+
+% \imulti - multi-index from the flatten index:
+\newcommand{\imulti}[1]{\fat{mind}\left( #1 \right)}
+
+% \poi : point (dot) placeholder:
+\newcommand{\poi}[0]{\, \cdot \,}
+
+% \upd - update text content:
+\newcommand{\upd}[1]{ {\color[HTML]{8b1d1d}#1} }
+
+% \note - note (for debug):
+\newcommand{\note}[1]{ {\color[HTML]{8b1d1d}/* #1 */} }
+% \renewcommand{\note}[1]{} % Comment this for debug
+
+% ... здесь можно добавить собственные команды ...

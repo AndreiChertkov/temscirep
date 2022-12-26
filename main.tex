@@ -1,0 +1,11 @@
+\documentclass[a4paper,12pt,russian]{article}
+                                  % Проект отчета по ГОСТ на основе шаблона
+                                  % https://github.com/AndreiChertkov/temscirep
+\usepackage{style}                % Стилевой файл для оформления по ГОСТу
+\input{commands}                  % Команды и сокращения для удобства работы
+%\newcommand\mega{}               % Раскомментировать для МегаГранта
+\begin{document}\temscirep{       % Далее разделы отчета из папки "content"
+  % добавлять разделы здесь ...   !
+  \sect{99 demo}{sec:demo}        % {файл из папки "content"}{метка для ref}
+    {Рекомендации по оформлению}  % {отображаемое название раздела}
+}\end{document}
