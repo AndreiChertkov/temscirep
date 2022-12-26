@@ -242,13 +242,18 @@ listparindent=\parindent}
   \def\figurename{Рисунок}
 
   \ifdefined\mega
-     \inp{title_mega}
+    \inp{title_mega}
   \fi
   \unless\ifdefined\mega
-     \inp{title}
+    \inp{title}
   \fi
 
-  \inp{performers}
+  \ifdefined\mega
+
+  \fi
+  \unless\ifdefined\mega
+    \inp{performers}
+  \fi
 
   \inp{abstract}
 
